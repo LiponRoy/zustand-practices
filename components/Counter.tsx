@@ -15,7 +15,7 @@ const Counter: React.FC = () => {
             <div className="flex justify-center items-center gap-x-8">
                 <button className=" text-[30px] font-bold" onClick={increment}>+</button>
 
-                <button className=" text-[30px] font-bold" onClick={decrement}>-</button>
+                <button className={` text-[40px] font-bold ${count === 0 && ' text-slate-400/50'}`} onClick={decrement}>-</button>
             </div>
 
         </div>
