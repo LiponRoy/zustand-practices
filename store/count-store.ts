@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { devtools, persist } from 'zustand/middleware';
 
 interface CounterState {
 	count: number;
@@ -7,7 +7,7 @@ interface CounterState {
 	decrement: () => void;
 }
 
-export const useCounterStore = create<CounterState>()(persist((set) => ({
+export const useCounterStore = create<CounterState>()(devtools(persist((set) => ({
 	count: 0,
 	increment: () => set((state) => ({ count: state.count + 1 })),
 	// decrement: () => set((state) => ({ count: state.count - 1 })),
@@ -16,4 +16,4 @@ export const useCounterStore = create<CounterState>()(persist((set) => ({
 			count: state.count > 0 ? state.count - 1 : state.count,
 		}));
 	},
-}),{name:"count-store", version: 1, getStorage: () => localStorage}));
+}),{name:"count-store", version: 1, getStorage: () => localStorage}),{enabled:true}));
